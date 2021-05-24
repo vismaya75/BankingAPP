@@ -1,0 +1,14 @@
+.errors{
+    color: red;
+}
+strong{
+    color: blue;
+}
+.red{
+    background-color:red;
+    opacity: .5;
+}
+p{
+    text-align: center;
+    color: green;
+}

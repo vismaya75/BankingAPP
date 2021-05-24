@@ -1,0 +1,33 @@
+<div class="containetr">
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4"><h1>Welcome to Sbk</h1></div>
+        <div class="col-4"></div>
+    </div>
+    
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <div class="mb-3">
+          {{aim}}<br>
+          <label for="acno" class="form-label">AccountNumber</label>
+          <!--input type="text" [(ngModel)]="accno" name="accno"  class="form-control" id="acno" !-->
+          <input type="text" formControlName="accno" name="accno"  class="form-control" id="acno" >
+
+          <div *ngIf="(this.loginForm.get('accno')?.touched||this.loginForm.get('accno')?.dirty)&& this.loginForm.get('accno')?.errors" class="errors">Invalid AccountNumber</div>
+        </div>
+        <div class="mb-3">
+          <label for="pwd" class="form-label">Password</label>
+          <input type="password" formControlName="pswd" name="pswd"  class="form-control" id="pwd">
+          <div *ngIf="(this.loginForm.get('pswd')?.touched||this.loginForm.get('pswd')?.dirty)&& this.loginForm.get('pswd')?.errors" class="errors">Invalid password</div>
+
+        </div>
+        <!--div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </!--div!-->
+        
+        <button type="submit"  class="btn btn-primary">Login</button>
+        <a routerLink="register">Registration</a>
+    
+      </form>
+</div>
+

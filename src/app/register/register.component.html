@@ -1,0 +1,33 @@
+<div class="containetr">
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4"><h1>WelcomeSbk</h1></div>
+        <div class="col-4"></div>
+    </div>
+    
+    <form [formGroup]="registerForm" (ngSubmit)="register()">
+        <div class="mb-4">
+            <label for="amt" class="form-label">Username</label>
+            <!--input type="text" [(ngModel)]="uname" name="uname" class="form-control" id="amt"-->
+            <input type="text" formControlName="uname" name="uname" class="form-control" id="amt">
+            <div *ngIf="(this.registerForm.get('uname')?.touched||this.registerForm.get('uname')?.dirty)&& this.registerForm.get('uname')?.errors" class="errors">Invalid UserName</div>
+            <!--div *ngIf="this.registerForm.get('uname')?.errors" class="form-text">Invalid UserName</div!-->
+          </div>
+        <div class="mb-4">
+          <label for="acno" class="form-label">AccountNumber</label>
+          <input type="text"  formControlName="accno" name="accno" class="form-control" id="acno" aria-describedby="emailHelp">
+          <!--div *ngIf="this.registerForm.get('accno')?.errors" class="form-text">Invalid AccountNumber</div!-->
+          <div *ngIf="(this.registerForm.get('accno')?.touched||this.registerForm.get('accno')?.dirty)&& this.registerForm.get('accno')?.errors" class="errors">Invalid AccountNumber</div>
+        </div>
+        <div class="mb-4">
+          <label for="pwd" class="form-label">Password</label>
+          <input type="password"  formControlName="pswd" name="pswd" class="form-control" id="pwd">
+          <!--div *ngIf="this.registerForm.get('pswd')?.errors" class="form-text">Invalid Password</div!-->
+          <div *ngIf="(this.registerForm.get('pswd')?.touched||this.registerForm.get('pswd')?.dirty)&& this.registerForm.get('pswd')?.errors" class="errors">Invalid Password</div>
+        </div>
+        <button type="submit" class="btn btn-primary">Registration</button>
+        
+      </form>
+</div>
+
+

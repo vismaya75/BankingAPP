@@ -1,0 +1,72 @@
+<h1 class="text-center"><strong>Welcome {{name}} to Sbk Bank</strong></h1>
+<app-animation-demo></app-animation-demo>
+<p>Login date: {{lLogin | date: 'medium'}}</p>
+
+<form [formGroup]="depositForm" (ngSubmit)=deposit()>
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4"><h1 appHighlight >Cash Deposit Form</h1></div>
+        <div class="col-4"></div>
+    </div>
+    <div class="mb-4" [ngClass]="acno? 'red' :''">
+      <label for="acno" class="form-label">AccountNumber</label>
+      <input type="text" formControlName="accno" name="accno" class="form-control" id="acno" aria-describedby="emailHelp">
+      <div *ngIf="(this.depositForm.get('accno')?.touched||this.depositForm.get('accno')?.dirty)&& this.depositForm.get('accno')?.errors" class="errors">Invalid AccountNumber</div>
+    </div>
+    <div class="mb-4" [ngClass]="acno? 'red' :''">
+      <label for="pwd" class="form-label">Password</label>
+      <input type="password" formControlName="pswd" name="pswd" class="form-control" id="pwd">
+      <div *ngIf="(this.depositForm.get('pswd')?.touched||this.depositForm.get('pswd')?.dirty)&& this.depositForm.get('pswd')?.errors" class="errors">Invalid password</div>
+    </div>
+    <div class="mb-4" [ngClass]="acno? 'red' :''">
+        <label for="amt" class="form-label">Amount</label>
+        <input type="text" formControlName="amt" name="amt" class="form-control" id="amt">
+        <div *ngIf="(this.depositForm.get('amt')?.touched||this.depositForm.get('amt')?.dirty)&& this.depositForm.get('amt')?.errors" class="errors">Invalid Amount</div>
+      </div>
+    <div class="col-md-12 text-center">
+    <button type="submit"  class="btn btn-primary">Deposit</button>
+  </div>
+</form>
+<br>
+<br>
+
+<form [formGroup]="withdrawForm" (ngSubmit)="withdraw()">
+  <div class="row">
+      <div class="col-4"></div>
+      <div class="col-4"><h1 appHighlight>Cash Withdrawel Form</h1></div>
+      <div class="col-4"></div>
+  </div>
+  <div class="mb-4" [ngClass]="acno? 'red' :''">
+    <label for="acno" class="form-label">AccountNumber</label>
+    <input type="text" formControlName="accno" name="accno" class="form-control" id="acno" aria-describedby="emailHelp">
+    <div *ngIf="(this.withdrawForm.get('accno')?.touched||this.withdrawForm.get('accno')?.dirty)&& this.withdrawForm.get('accno')?.errors" class="errors">Invalid AccountNumber</div>
+
+  </div>
+  <div class="mb-4" [ngClass]="acno? 'red' :''">
+    <label for="pwd" class="form-label">Password</label>
+    <input type="password" formControlName="pswd" name="pswd" class="form-control" id="pwd">
+    <div *ngIf="(this.withdrawForm.get('pswd')?.touched||this.withdrawForm.get('pswd')?.dirty)&& this.withdrawForm.get('pswd')?.errors" class="errors">Invalid password</div>
+
+  </div>
+  <div class="mb-4"[ngClass]="acno? 'red' :''" >
+      <label for="amt" class="form-label">Amount</label>
+      <input type="text" formControlName="amt" name="amt" class="form-control" id="amt">
+      <div *ngIf="(this.withdrawForm.get('amt')?.touched||this.withdrawForm.get('amt')?.dirty)&& this.withdrawForm.get('amt')?.errors" class="errors">Invalid Amount</div>
+
+    </div>
+    <div class="col-md-12 text-center">
+   <button type="submit"  class="btn btn-primary">Withdraw</button>
+  </div>
+  </form>
+  <!-- <p>Login date (unformatted): {{lLogin}}</p> -->
+  <!-- <p>Login date: {{lLogin | date}}</p> -->
+  <!-- <p>Login date: {{lLogin | date | uppercase }}</p> -->
+
+
+<div class="col-md-12 text-center">
+  <app-delete-confirmation (onCancel)= "onCancel()" (onDelete)="onDelete($event)" [item]="acno"></app-delete-confirmation>
+  <br>
+  <br>
+<button type="submit"  class="btn btn-primary"(click)="delete()">Delete Account</button>
+</div>
+
